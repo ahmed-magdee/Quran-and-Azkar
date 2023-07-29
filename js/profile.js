@@ -38,6 +38,23 @@ let theDataProfile = {
   },
 };
 
+// The Input Image Handle
+inputImg.onchange = () => {
+  console.log(inputImg.value);
+  let file = new FileReader();
+  file.readAsDataURL(inputImg.files[0]);
+  file.onload = () => {
+    const dataStorage = JSON.parse(localStorage.getItem("profile-data"));
+    if (dataStorage) {
+      dataStorage.image = file.result;
+      localStorage.setItem("profile-data", JSON.stringify(dataStorage));
+    } else {
+      theDataProfile.image = file.result;
+      localStorage.setItem("profile-data", JSON.stringify(theDataProfile));
+    }
+  };
+};
+
 // Form Onsubmit
 mainForm.onsubmit = (e) => {
   e.preventDefault();
@@ -50,7 +67,6 @@ mainForm.onsubmit = (e) => {
     } else {
       theDataProfile.name = inputUsername.value;
       theDataProfile.age = inputAge.value === "" ? "لم تكتبه" : inputAge.value;
-      theDataProfile.image = inputImg.value;
       localStorage.setItem("profile-data", JSON.stringify(theDataProfile));
     }
     createProfileDivs();
