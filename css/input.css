@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+}
+
+@layer components {
+  .all-header {
+    @apply bg-[url('../imgs/malik-shibly-lKbz2ejxYbA-unsplash.jpg')] bg-cover bg-center h-screen text-white relative before:content-[''] before:absolute before:w-full before:h-full before:bg-black before:opacity-70 before:z-[-1] z-10;
+  }
+  .li-link {
+    @apply transition-all headerScreen:w-full duration-300 relative before:content-[""] before:absolute before:w-0 before:h-[1px] before:bg-main before:left-1/2 before:-translate-x-1/2 before:transition-all before:duration-300 before:bottom-[-10px] hover:before:w-full hover:text-main;
+  }
+  .li-link.active {
+    @apply text-main before:content-[""] before:absolute before:w-full before:h-[1px] before:bg-main before:left-1/2 before:-translate-x-1/2;
+  }
+  .icon.active {
+    @apply text-main;
+  }
+  .scroll-to-top.active {
+    @apply bottom-5;
+  }
+  .ul-azkar li.active {
+    @apply bg-[#4f4b29] text-white;
+  }
+  span.active {
+    @apply text-red-900;
+  }
+  .up-20 {
+    @apply duration-300 -translate-y-5 opacity-0 shadow-[0_4px_20px_0_#4f4b29];
+  }
+  /* .list.active {
+    @apply headerScreen:flex headerScreen:flex-col headerScreen:items-start headerScreen:mt-4;
+  } */
+  /* .list.active li:not(:last-child) {
+    @apply headerScreen:mb-3;
+  } */
+  /* .list.active li {
+    @apply headerScreen:w-full;
+  } */
+  .nav.active {
+    @apply headerScreen:h-[290px];
+  }
+  .overflow.active {
+    @apply fixed top-0 right-0 text-center w-full h-full bg-white/40 backdrop-blur-md z-[100] pt-3 px-4 overflow-y-auto;
+  }
+  .stop {
+    @apply pointer-events-none;
+  }
+  .aya.active {
+    @apply bg-[#4f4b29]/40 text-white;
+  }
+}
