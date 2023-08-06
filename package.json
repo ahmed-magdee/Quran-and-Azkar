@@ -1,0 +1,15 @@
+{
+  "name": "quran-kareem-by-html-tailwind-js-and-apis",
+  "version": "1.0.0",
+  "description": "<img align='center' width=\"80%\" src=\"./imgs/Screenshot .png\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startTailwind": "npx tailwindcss -i ./css/input.css -o ./css/css/style.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}

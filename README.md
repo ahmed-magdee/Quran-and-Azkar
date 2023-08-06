@@ -16,5 +16,5 @@ Html, Css, Js, Tailwind, Bootstrap, React
 
 ## Links
 
-- [![Facebook](https://www.facebook.com/profile.php?id=100085749470017?style=for-the-badge&logo=facebook&logoColor=white)](https://www.linkedin.com/in/mohamed-ahmed-bb358b239/)
+- ![Facebook](https://www.facebook.com/profile.php?id=100085749470017?style=for-the-badge&logo=facebook&logoColor=white)
 <!-- - [![link](https://img.shields.io/badge/link-green?style=for-the-badge&logo=link&logoColor=black)](https://qurank-kareem.netlify.app) -->
