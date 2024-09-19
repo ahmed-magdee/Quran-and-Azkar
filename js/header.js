@@ -5,34 +5,35 @@ const headerUl = document.querySelector("ul.list");
 const headerData = [
   {
     name: "الصفحة الرئيسية",
-    link: "../index.html",
+    link: `${window.location.origin}/index.html`,
     page: "/index.html",
   },
   {
     name: "القرآن الكريم",
-    link: "/html/choose-quran.html",
+    link: `${window.location.origin}/html/choose-quran.html`,
   },
   {
     name: "التفسير الميسر",
-    link: "/html/tafsir.html",
+    link: `${window.location.origin}/html/tafsir.html`,
   },
   {
     name: "الحديث الشريف",
-    link: "/html/hadeeth.html",
+    link: `${window.location.origin}/html/hadeeth.html`,
   },
   {
     name: "الأذكار",
-    link: "/html/azkar.html",
+    link: `${window.location.origin}/html/azkar.html`,
   },
   {
     name: "توقيت الصلاة",
-    link: "/html/prayer-time.html",
+    link: `${window.location.origin}/html/prayer-time.html`,
   },
 ];
 
 function createLisAndLinks() {
   const pathname = window.location.pathname;
   headerData.forEach((link) => {
+    console.log(link.link);
     const li = document.createElement("li");
     li.className = `li-link ${
       pathname.includes(link.page || link.link) && "active"
