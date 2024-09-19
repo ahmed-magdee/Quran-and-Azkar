@@ -10,7 +10,7 @@ let theDataProfile = {
 };
 let dataStorage = JSON.parse(localStorage.getItem("profile-data"));
 
-if (dataStorage.sorahName && dataStorage.aya) {
+if (dataStorage?.sorahName && dataStorage?.aya) {
   theDataProfile = {
     sorahName: dataStorage.sorahName,
     aya: dataStorage.aya,
