@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="يمكنك قراءة القرآن من خلال الضغط علي السورة التي تريدها."
+      content="توقيت الصلاة للعديد من المدن والمحافظات المصرية."
     />
     <meta name="author" content="Ahmed Magdy" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,10 +26,10 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="../imgs/icon.png" type="image/png" />
-    <link rel="stylesheet" href="../css/all.min.css" />
-    <link rel="stylesheet" href="../css/dist/style.css" />
-    <title>قراءة القرآن</title>
+    <link rel="icon" href="imgs/icon.png" type="image/png" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/dist/style.css" />
+    <title>توقيت الصلاة</title>
   </head>
   <body class="font-cairo bg-[#eee]">
     <button
@@ -67,27 +67,27 @@
         </div>
       </div>
     </section>
-    <!-- End Header -->
-    <!-- Start Main Section -->
-    <section class="main-section">
+    <!-- Start Time Of Pray -->
+    <div class="pray-time">
       <div class="container mx-auto">
-        <div
-          class="loading-animation h-[calc(100vh-(80px+66px))] flex items-center justify-center"
-        >
-          <h1 class="flex items-center justify-center headerScreen:text-2xl">
-            جاري التحميل
-            <div
-              class="circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast"
-            ></div>
-          </h1>
+        <div class="main-data">
+          <div
+            class="loading-animation h-[calc(100vh-(80px+66px))] flex items-center justify-center"
+          >
+            <h1 class="flex items-center justify-center headerScreen:text-2xl">
+              جاري التحميل
+              <div
+                class="circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast"
+              ></div>
+            </h1>
+          </div>
+          <div class="data-fetch"></div>
         </div>
-        <ul class="main-ul flex flex-wrap items-center justify-center"></ul>
       </div>
-    </section>
-    <!-- End Main Section -->
-    <section class="overflow relative"></section>
-    <script src="../js/header.js"></script>
-    <script src="../js/public.js"></script>
-    <script src="../js/quran.js"></script>
+    </div>
+    <!-- End Time Of Pray -->
+    <script src="js/header.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/profile.js"></script>
   </body>
 </html>

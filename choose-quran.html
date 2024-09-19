@@ -3,11 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="الحديث الشريف: يوجد هنا أكثر من 4000 حديث."
-    />
-    <meta name="author" content="Ahmed Magdy" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,12 +21,12 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="../imgs/icon.png" type="image/png" />
-    <link rel="stylesheet" href="../css/all.min.css" />
-    <link rel="stylesheet" href="../css/dist/style.css" />
-    <title>الحديث الشريف</title>
+    <link rel="icon" href="imgs/icon.png" type="image/png" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/dist/style.css" />
+    <title>الإختيار</title>
   </head>
-  <body class="font-cairo bg-[#eee]">
+  <body class="font-cairo">
     <button
       type="button"
       title="scroll-to-top"
@@ -54,10 +49,10 @@
               </h2>
             </div>
             <div class="left headerScreen:flex-1 z-50">
-              <div class="icon md:hidden transition-all duration-300">
-                <i
-                  class="fa-solid fa-bars fa-2x cursor-pointer transition-all duration-300"
-                ></i>
+              <div
+                class="icon md:hidden cursor-pointer transition-all duration-300"
+              >
+                <i class="fa-solid fa-bars fa-2x"></i>
               </div>
               <ul
                 class="list group-[li]:hover:text-black flex items-center justify-between md:space-x-2 md:space-x-reverse headerScreen:flex-col headerScreen:items-start headerScreen:mt-4 headerScreen:space-y-3"
@@ -70,26 +65,33 @@
     <!-- End Header -->
 
     <!-- Start Main Section -->
-    <section class="main-section">
-      <div class="container mx-auto">
+    <div class="choose-quran">
+      <div
+        class="container min-h-[calc(100vh-66px)] flex items-center justify-center"
+      >
         <div
-          class="loading-animation h-[calc(100vh-(80px+66px))] flex items-center justify-center"
+          class="content flex items-center justify-center gap-8 flex-wrap w-full"
         >
-          <h1 class="flex items-center justify-center headerScreen:text-2xl">
-            جاري التحميل
-            <div
-              class="circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast"
-            ></div>
-          </h1>
+          <a
+            href="listening-to-quran.html"
+            class="w-[150px] text-center text-second border border-second rounded-md py-[15px] px-[20px] transition-all duration-300 hover:text-white hover:bg-second"
+            aria-label="quran-write"
+          >
+            <i class="fa-solid fa-headphones text-6xl"></i>
+            <p class="pt-[20px]">الأستماع</p>
+          </a>
+          <a
+            href="quran.html"
+            class="w-[150px] text-center text-second border border-second rounded-md py-[15px] px-[20px] transition-all duration-300 hover:text-white hover:bg-second"
+            aria-label="quran-listen"
+          >
+            <i class="fa-solid fa-book-quran text-6xl"></i>
+            <p class="pt-[20px]">القراءة</p>
+          </a>
         </div>
-        <div
-          class="container-data md:w-[700px] mx-auto mt-20 text-center"
-        ></div>
       </div>
-    </section>
+    </div>
     <!-- End Main Section -->
-    <script src="../js/header.js"></script>
-    <script src="../js/public.js"></script>
-    <script src="../js/hadeeth.js"></script>
+    <script src="js/header.js"></script>
   </body>
 </html>
