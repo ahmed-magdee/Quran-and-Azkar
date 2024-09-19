@@ -9,6 +9,15 @@
   h2 {
     @apply text-2xl font-bold;
   }
+  .font-cairo {
+    font-family: "Cairo", sans-serif;
+  }
+  .font-secondFont {
+    font-family: "Noto Nastaliq Urdu", serif;
+  }
+  .container {
+    @apply mx-auto;
+  }
 }
 
 @layer components {
@@ -16,12 +25,12 @@
     @apply bg-[url('../imgs/malik-shibly-lKbz2ejxYbA-unsplash.jpg')] bg-cover bg-center h-screen text-white relative before:content-[''] before:absolute before:w-full before:h-full before:bg-black before:opacity-70 before:z-[-1] z-10;
   }
   .li-link {
-    @apply transition-all headerScreen:w-full duration-300 relative before:content-[""] before:absolute before:w-0 before:h-[1px] before:bg-main before:left-1/2 before:-translate-x-1/2 before:transition-all before:duration-300 before:bottom-[-10px] hover:before:w-full hover:text-main;
+    @apply transition-all w-full md:w-fit duration-300 relative before:content-[""] before:absolute before:w-0 before:h-[1px] before:bg-main before:left-1/2 before:-translate-x-1/2 before:transition-all before:duration-300 before:bottom-[-10px] hover:before:w-full hover:text-main;
   }
   .li-link.active {
     @apply text-main before:content-[""] before:absolute before:w-full before:h-[1px] before:bg-main before:left-1/2 before:-translate-x-1/2;
   }
-  .icon.active {
+  .icon i.active {
     @apply text-main;
   }
   .scroll-to-top.active {
@@ -36,6 +45,7 @@
   .up-20 {
     @apply duration-300 -translate-y-5 opacity-0 shadow-[0_4px_20px_0_#4f4b29];
   }
+  /* =============================================== */
   /* .list.active {
     @apply headerScreen:flex headerScreen:flex-col headerScreen:items-start headerScreen:mt-4;
   } */
@@ -45,6 +55,7 @@
   /* .list.active li {
     @apply headerScreen:w-full;
   } */
+  /* =============================================== */
   .nav.active {
     @apply headerScreen:h-[290px];
   }
@@ -56,5 +67,39 @@
   }
   .aya.active {
     @apply bg-[#4f4b29]/40 text-white;
+  }
+}
+.sheikh-list,
+.sorahs-list-ul {
+  direction: ltr;
+}
+::-webkit-scrollbar {
+  @apply w-[4px] bg-white;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-second;
+}
+::-webkit-scrollbar-track {
+}
+.sorahs-list-ul li.active,
+.sorahs-list-ul-small-screens li:hover {
+  @apply bg-gradient-to-l from-second to-transparent text-white;
+}
+
+.div-volume {
+  direction: ltr;
+}
+
+.input-volume::-webkit-slider-thumb,
+.input-volume-progress::-webkit-slider-thumb {
+  @apply appearance-none w-[15px] h-[15px] rounded-full bg-second shadow-box;
+}
+
+@keyframes rotate-img {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
   }
 }

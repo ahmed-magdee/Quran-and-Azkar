@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="استمع للقرآن الكريم بأصوات العديد من الشيوخ أمثال أحمد بن علي العجمي، ياسر الدوسري، ناصر القطامي، شيوخ مصريين، شيوخ سعوديين، وغيرهم الكثير."
+    />
+    <meta name="author" content="Ahmed Magdy" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../imgs/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/dist/style.css" />
+    <title>الإستماع إلي القرآن</title>
+  </head>
+  <body class="font-cairo">
+    <!-- Start Header -->
+    <section class="bg-[#4f4b29] text-white">
+      <div class="container mx-auto">
+        <div class="all-container relative">
+          <div
+            class="nav py-4 flex justify-between h-[66px] md:items-center overflow-hidden transition-all duration-300"
+          >
+            <div class="title order-1 md:order-[0]">
+              <h2
+                class="cursor-pointer font-secondFont headerScreen:text-xl text-main font-bold"
+              >
+                قرآن وأذكار
+              </h2>
+            </div>
+            <div class="left headerScreen:flex-1 z-50">
+              <div class="icon md:hidden transition-all duration-300">
+                <i
+                  class="fa-solid fa-bars fa-2x cursor-pointer transition-all duration-300"
+                ></i>
+              </div>
+              <ul
+                class="list group-[li]:hover:text-black flex items-center justify-between md:space-x-2 md:space-x-reverse headerScreen:flex-col headerScreen:items-start headerScreen:mt-4 headerScreen:space-y-3"
+              ></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Header -->
+    <!-- Start Content Data -->
+    <div class="content-data py-[15px] h-[calc(100vh-66px)]">
+      <div class="container">
+        <div
+          class="loading-animation h-[calc(100vh-(80px+66px))] flex items-center justify-center"
+        >
+          <h1 class="flex items-center justify-center headerScreen:text-2xl">
+            جاري التحميل
+            <div
+              class="circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast"
+            ></div>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <!-- End Content Data -->
+    <script src="../js/header.js"></script>
+    <script src="../js/choose-sheikh.js"></script>
+  </body>
+</html>

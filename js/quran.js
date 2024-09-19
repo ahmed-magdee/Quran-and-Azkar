@@ -1,17 +1,21 @@
+const mainSection = document.querySelector(".main-section");
 const mainUl = document.querySelector(".main-ul");
 const loadingDiv = document.querySelector(".loading-animation");
 const overflow = document.querySelector(".overflow");
 
 // The Object Of Data
 let theDataProfile = {
-  name: "",
-  age: "",
-  image: "",
-  sorah: {
-    sorahName: "",
-    aya: "",
-  },
+  sorahName: "",
+  aya: "",
 };
+let dataStorage = JSON.parse(localStorage.getItem("profile-data"));
+
+if (dataStorage.sorahName && dataStorage.aya) {
+  theDataProfile = {
+    sorahName: dataStorage.sorahName,
+    aya: dataStorage.aya,
+  };
+}
 
 // All Sorahs Fetch
 function allSorahsFetch() {
@@ -35,7 +39,7 @@ function showingData() {
 }
 showingData();
 
-// Loop On The Data And Create The Information Divs
+// Loop On The Data And Create The suras List
 function createTheDivs(allData) {
   allData.forEach((one) => {
     const sorahNumber = one.number;
@@ -44,11 +48,23 @@ function createTheDivs(allData) {
     const revelationType = one.revelationType === "Meccan" ? "مكية" : "مدنية";
 
     const li = document.createElement("li");
-    li.className =
-      "sorah w-[190px] h-[170px] cursor-pointer transition-all duration-[.5s] hover:bg-[#4f4b29] hover:text-white hover:translate-y-[-10px] flex items-center justify-center border-[1px] border-[#4f4b29] flex-col rounded m-3 group shadow-[0px_1px_5px_0px_rgba(79,75,41,1)] hover:shadow-[0px_10px_5px_0px_rgba(79,75,41,1)] py-6";
+    li.className = `sorah w-[190px] h-[170px] cursor-pointer transition-all duration-[.5s] flex items-center justify-center border-[1px] border-[#4f4b29] flex-col rounded m-3 group shadow-[0px_1px_5px_0px_rgba(79,75,41,1)] py-6
+      ${
+        theDataProfile.sorahName == sorahNumber
+          ? "bg-[#4f4b29] text-white translate-y-[-10px] shadow-[0px_10px_5px_0px_rgba(79,75,41,1)]"
+          : "hover:bg-[#4f4b29] hover:text-white hover:translate-y-[-10px] hover:shadow-[0px_10px_5px_0px_rgba(79,75,41,1)]"
+      }
+      `;
     li.dataset.sorah = sorahNumber;
-    li.innerHTML = `<h3 class="text-bold font-secondFont text-2xl mb-6 group-hover:text-white text-[#4f4b29] transition-all duration-[.5s]">${sorahName}</h3><p class="font-semibold mb-1">الرقم في المصحف <span>${sorahNumber}</span></p><p class="font-semibold mb-1">عدد الآيات <span>${numberOfAyahs}</span></p><p class="font-semibold  mb-1">وهي سورة <span>${revelationType}</span></p>`;
+    li.innerHTML = `<h3 class="text-bold font-secondFont text-2xl mb-6">${sorahName}</h3><p class="font-semibold mb-1">الرقم في المصحف <span>${sorahNumber}</span></p><p class="font-semibold mb-1">عدد الآيات <span>${numberOfAyahs}</span></p><p class="font-semibold  mb-1">وهي سورة <span>${revelationType}</span></p>`;
     mainUl.appendChild(li);
+
+    if (li.dataset.sorah == theDataProfile.sorahName) {
+      li.scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      });
+    }
 
     li.onclick = () => {
       const allLi = document.querySelectorAll(".sorah");
@@ -79,7 +95,7 @@ function fetchDataSorah(sorahWhatWeWant, ayahNumber = null) {
     });
 }
 
-// Create The Divs Of Sorahs
+// Create The Divs Of Sorah's Ayats
 function createTheMainSorah(allData, sorahWhatWeWant) {
   overflow.classList.add("active");
   const name = allData.name;
@@ -98,13 +114,25 @@ function createTheMainSorah(allData, sorahWhatWeWant) {
   h1.innerHTML = `${name} <span>وعدد آياتها ${numberOfAyahs}</span>`;
   allTextAyahsContainer.appendChild(h1);
 
+  let theAya;
+
   ayahs.forEach((aya) => {
     const numberInSurah = aya.numberInSurah;
     const text = aya.text;
 
+    if (theDataProfile.aya == numberInSurah) {
+      theAya = numberInSurah;
+    }
+
     const h2 = document.createElement("h2"); // Create The Ayah And Its Number
-    h2.className =
-      "aya font-mainFont font-normal border-b-[1px] border-red-800 mb-[30px] cursor-pointer leading-[2.5] transition-all duration-300 hover:bg-[#4f4b29]/40 hover:text-white py-5 px-2 rounded";
+    h2.className = `aya font-mainFont font-normal border-b-[1px] border-red-800 mb-[30px] cursor-pointer leading-[2.5] transition-all duration-300 py-5 px-2 rounded
+      ${
+        theDataProfile.sorahName == number &&
+        theDataProfile.aya == numberInSurah
+          ? "bg-[#4f4b29]/40 text-white this-aya"
+          : "hover:bg-[#4f4b29]/40 hover:text-white"
+      }
+      `;
     h2.dataset.sorah = number;
     h2.dataset.aya = numberInSurah;
     h2.innerHTML = `${text} <span data-number= ${numberInSurah} data-sorahname = ${sorahWhatWeWant} class="number-aya hover:text-red-900">{${numberInSurah}}</span>`;
@@ -123,11 +151,18 @@ function createTheMainSorah(allData, sorahWhatWeWant) {
   };
   overflow.appendChild(button);
   overflow.appendChild(allTextAyahsContainer);
+  if (theDataProfile.sorahName == number && theDataProfile.aya == theAya) {
+    document.querySelector(".this-aya").scrollIntoView({
+      block: "center",
+      behavior: "smooth",
+    });
+  } else {
+    overflow.scrollTo({
+      top: "0",
+      behavior: "smooth",
+    });
+  }
 }
-
-overflow.onscroll = () => {
-  console.log("yes");
-};
 
 // Document AddEventListener
 document.addEventListener("click", (e) => {
@@ -141,6 +176,14 @@ document.addEventListener("click", (e) => {
     fetchTafsirData(sorahH2, ayaH2);
   }
   if (e.target.classList.contains("number-aya")) {
+    const allAyaH2 = document.querySelectorAll(".aya");
+    allAyaH2.forEach((h2) => {
+      h2.classList.remove("bg-[#4f4b29]/40");
+      h2.classList.remove("text-white");
+      e.target.parentElement.classList.add("bg-[#4f4b29]/40");
+      e.target.parentElement.classList.add("text-white");
+      e.target.parentElement.classList.add("this-aya");
+    });
     //Span Aya Number
     if (document.querySelector(".p-saver")) {
       document.querySelector(".p-saver").remove();
@@ -153,16 +196,9 @@ document.addEventListener("click", (e) => {
     e.target.classList.add("active");
     const theAya = +e.target.dataset.number;
     const theSorah = +e.target.dataset.sorahname;
-    let dataStorage = JSON.parse(localStorage.getItem("profile-data"));
-    if (dataStorage) {
-      dataStorage.sorah.aya = theAya;
-      dataStorage.sorah.sorahName = theSorah;
-      localStorage.setItem("profile-data", JSON.stringify(dataStorage));
-    } else {
-      theDataProfile.sorah.aya = theAya;
-      theDataProfile.sorah.sorahName = theSorah;
-      localStorage.setItem("profile-data", JSON.stringify(theDataProfile));
-    }
+    theDataProfile.aya = theAya;
+    theDataProfile.sorahName = theSorah;
+    localStorage.setItem("profile-data", JSON.stringify(theDataProfile));
     document.querySelector(".close-overflow").classList.add("stop");
     createPSaver(e.target);
   }
@@ -205,8 +241,6 @@ function createTafsirToAya(ayahH2, number, arabic_text, translation) {
   allAyaH2.forEach((h2) => {
     const ayaNumber = +h2.dataset.aya;
     if (ayaNumber == number) {
-      console.log(ayaNumber);
-      console.log(number);
       const p = document.createElement("p");
       p.className = "aya-tafsir text-xl mt-4 text-red-700 leading-[2.5]";
       p.appendChild(document.createTextNode(translation));
@@ -219,9 +253,9 @@ function createTafsirToAya(ayahH2, number, arabic_text, translation) {
 function createPSaver(span) {
   const pSave = document.createElement("p");
   pSave.className =
-    "p-saver sticky top-[50px] bg-[#4f4b29] text-white transition-all duration-300 w-[200px] h-[90px] rounded-md shadow-[0_4px_10px_0_#4f4b29] mx-auto flex items-center justify-center text-xl";
+    "p-saver fixed top-[50px] right-1/2 translate-x-1/2 bg-[#4f4b29] text-white transition-all duration-300 w-[200px] h-[90px] rounded-md shadow-[0_4px_10px_0_#4f4b29] mx-auto flex items-center justify-center text-xl z-[999]";
   pSave.innerHTML = "تم الحفظ !";
-  overflow.prepend(pSave);
+  mainSection.appendChild(pSave);
   let count;
   let removeP;
   if (document.querySelector(".p-saver")) {

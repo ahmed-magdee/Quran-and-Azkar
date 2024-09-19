@@ -12,13 +12,11 @@ function fetchData(select) {
       return response.json();
     })
     .then((data) => {
-      console.log(select);
       const allData = data;
       const items = allData.items; // Loop
       const pages = allData.pagination.pages; // Loop
       const pageSize = allData.pagination.pageSize;
       const endIndex = allData.pagination.endIndex;
-      console.log(allData);
       loading.remove();
       const mainDiv = document.createElement("div");
       mainDiv.classList.add("main-div");

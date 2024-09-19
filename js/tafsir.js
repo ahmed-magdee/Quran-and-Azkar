@@ -47,7 +47,6 @@ function createTheDivs(allData) {
       });
       const sorahWhatWeWant = +li.dataset.sorah;
       const sorahnameLi = li.dataset.sorahname;
-      console.log(sorahWhatWeWant);
       fetchDataSorahTafsir(sorahWhatWeWant, sorahnameLi);
     };
   });
