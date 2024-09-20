@@ -960,6 +960,7 @@ async function getData() {
     allDataContainer
   );
   container.appendChild(allDataContainer);
+  createAnimationDivForWaitingVoice();
   const stylesUl =
     "sheikh-list pt-[20px] pb-[15px] px-[15px] h-[calc(100%-85px)] hidden md:flex items-center justify-center gap-x-5 gap-y-8 flex-wrap overflow-x-hidden overflow-y-scroll";
   const stylesLi =
@@ -1027,6 +1028,7 @@ function createShiekhList(
         li.className = `shiekh-name  ${stylesLi}`;
         li.onclick = () => {
           document.querySelector(".sorahs-data-div").remove();
+          createAnimationDivForWaitingVoice();
           chooseSheikh(li.textContent, data, allDataContainer);
         };
         const sheikhImage = document.createElement("img");
@@ -1128,6 +1130,7 @@ function createListOfAllSorahs(
             .querySelectorAll(".li-surah")
             .forEach((one) => one.classList.remove("active"));
           li.classList.add("active");
+          createAnimationDivForWaitingVoice();
           createAudio(server, one.id.toString(), surahList);
         };
         ulSorahNameDiv.appendChild(li);
@@ -1318,9 +1321,22 @@ function sheikhInfoDivCreation(
 audioElement.onloadedmetadata = () => {
   document.querySelector(".input-volume-progress").max =
     audioElement.duration.toString();
+  document.querySelector(".listen-div-animation").remove();
   sumTiming(audioElement.duration.toString());
   changeVolume(document.querySelector(".input-volume"));
 };
+
+// Animation For Waiting loadedmetadata Of Audio Element
+function createAnimationDivForWaitingVoice() {
+  const animationDiv = document.createElement("div");
+  animationDiv.className =
+    "listen-div-animation flex items-center justify-center px-[15px] absolute top-0 left-0 w-full h-full bg-second/60 backdrop-blur-[10px]";
+  const spanAnimation = document.createElement("span");
+  spanAnimation.className =
+    "circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/20 border-t-[#4f4b29] rounded-full animate-spin-fast";
+  animationDiv.appendChild(spanAnimation);
+  document.querySelector(".all-content-container").appendChild(animationDiv);
+}
 
 // Destuction Time
 function destructionTime(time) {
@@ -1475,6 +1491,7 @@ function forwardAndBackwardIcon(server, surahNumber) {
   inputProgress.value = "0";
   playIcon.classList.remove("fa-pause");
   playIcon.classList.add("fa-play");
+  createAnimationDivForWaitingVoice();
   document.querySelectorAll(".li-surah").forEach((one) => {
     one.classList.remove("active");
 
