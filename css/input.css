@@ -59,9 +59,6 @@
   .nav.active {
     @apply headerScreen:h-[290px];
   }
-  .overflow.active {
-    @apply fixed top-0 right-0 text-center w-full h-full bg-white/40 backdrop-blur-md z-[100] pt-3 px-4 overflow-y-auto;
-  }
   .stop {
     @apply pointer-events-none;
   }

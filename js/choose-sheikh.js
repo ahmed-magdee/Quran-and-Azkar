@@ -1218,7 +1218,7 @@ function createAudio(server, surahNumber, surahList) {
   const repeatIcon = document.createElement("i");
   repeatIcon.title = "تكرار السورة";
   repeatIcon.className =
-    "fa-solid fa-repeat cursor-pointer w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center";
+    "fa-solid fa-repeat cursor-pointer w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center shadow-box";
   repeatIcon.onclick = () => {
     repeatVolume(repeatIcon);
   };
@@ -1227,7 +1227,7 @@ function createAudio(server, surahNumber, surahList) {
   // Forward Button
   const forwardIcon = document.createElement("i");
   forwardIcon.title = "السورة التالية";
-  forwardIcon.className = `fa-solid fa-forward-step w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center
+  forwardIcon.className = `fa-solid fa-forward-step w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center shadow-box
     ${
       surahNumber == surahList[surahList.length - 1]
         ? "cursor-not-allowed"
@@ -1245,7 +1245,7 @@ function createAudio(server, surahNumber, surahList) {
   const playIcon = document.createElement("i");
   playIcon.title = "التشغيل أو الإيقاف";
   playIcon.className =
-    "fa-solid fa-play play-icon cursor-pointer w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center";
+    "fa-solid fa-play play-icon cursor-pointer w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center shadow-box";
   playIcon.onclick = function () {
     playMedia("button");
   };
@@ -1254,7 +1254,7 @@ function createAudio(server, surahNumber, surahList) {
   // backword Button
   const backwordIcon = document.createElement("i");
   backwordIcon.title = "السورة السابقة";
-  backwordIcon.className = `fa-solid fa-backward-step w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center
+  backwordIcon.className = `fa-solid fa-backward-step w-[32px] h-[32px] bg-white text-second rounded-[10px] flex items-center justify-center shadow-box
     ${surahNumber == surahList[0] ? "cursor-not-allowed" : "cursor-pointer"}
     `;
   backwordIcon.onclick = () => {

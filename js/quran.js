@@ -67,6 +67,10 @@ function createTheDivs(allData) {
     }
 
     li.onclick = () => {
+      const animationDiv = animation();
+      overflow.appendChild(animationDiv);
+      overflow.classList.remove("top-full");
+      overflow.classList.add("top-0");
       const allLi = document.querySelectorAll(".sorah");
       allLi.forEach((liSorah) => {
         liSorah.classList.add("stop");
@@ -97,7 +101,7 @@ function fetchDataSorah(sorahWhatWeWant, ayahNumber = null) {
 
 // Create The Divs Of Sorah's Ayats
 function createTheMainSorah(allData, sorahWhatWeWant) {
-  overflow.classList.add("active");
+  overflow.innerHTML = "";
   const name = allData.name;
   const number = allData.number;
   const numberOfAyahs = allData.numberOfAyahs;
@@ -146,8 +150,8 @@ function createTheMainSorah(allData, sorahWhatWeWant) {
   button.innerHTML = "X";
 
   button.onclick = () => {
-    overflow.innerHTML = "";
-    overflow.classList.remove("active");
+    overflow.classList.remove("top-0");
+    overflow.classList.add("top-full");
   };
   overflow.appendChild(button);
   overflow.appendChild(allTextAyahsContainer);
@@ -201,6 +205,8 @@ document.addEventListener("click", (e) => {
     localStorage.setItem("profile-data", JSON.stringify(theDataProfile));
     document.querySelector(".close-overflow").classList.add("stop");
     createPSaver(e.target);
+    mainUl.innerHTML = "";
+    showingData();
   }
 });
 
@@ -273,4 +279,21 @@ function createPSaver(span) {
       document.querySelector(".close-overflow").classList.remove("stop");
     }, 1300);
   }
+}
+
+// =============================================================================
+// animation functions
+function animation() {
+  const animationContainer = document.createElement("div");
+  animationContainer.classList =
+    "loading-animation h-full flex items-center justify-center";
+  const h2 = document.createElement("h2");
+  h2.className = "flex items-center justify-center headerScreen:text-2xl";
+  h2.appendChild(document.createTextNode("جاري التحميل"));
+  const span = document.createElement("span");
+  span.className =
+    "block circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast";
+  h2.appendChild(span);
+  animationContainer.appendChild(h2);
+  return animationContainer;
 }

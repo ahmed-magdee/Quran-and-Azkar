@@ -41,6 +41,10 @@ function createTheDivs(allData) {
     mainUl.appendChild(li);
 
     li.onclick = () => {
+      const animationDiv = animation();
+      overflow.appendChild(animationDiv);
+      overflow.classList.remove("top-full");
+      overflow.classList.add("top-0");
       const allLi = document.querySelectorAll(".sorah");
       allLi.forEach((liSorah) => {
         liSorah.classList.add("stop");
@@ -59,19 +63,19 @@ function fetchDataSorahTafsir(sorahWhatWeWant, sorahnameLi) {
   )
     .then((response) => response.json())
     .then((data) => {
+      overflow.innerHTML = "";
       const allLi = document.querySelectorAll(".sorah");
       allLi.forEach((liSorah) => {
         liSorah.classList.remove("stop");
       });
       const tafsir = data.result;
-      overflow.classList.add("active");
       const allTextAyahsContainer = document.createElement("div");
 
-      const h1 = document.createElement("h1");
-      h1.className =
+      const h2 = document.createElement("h2");
+      h2.className =
         "mb-10 text-red-800 w-fit border-b-2 border-red-800 mx-auto";
-      h1.innerHTML = `${sorahnameLi} <span>وعدد آياتها ${tafsir.length}</span>`;
-      allTextAyahsContainer.appendChild(h1);
+      h2.innerHTML = `${sorahnameLi} <span>وعدد آياتها ${tafsir.length}</span>`;
+      allTextAyahsContainer.appendChild(h2);
 
       const button = document.createElement("button");
       button.className =
@@ -79,8 +83,9 @@ function fetchDataSorahTafsir(sorahWhatWeWant, sorahnameLi) {
       button.innerHTML = "X";
 
       button.onclick = () => {
+        overflow.classList.remove("top-0");
+        overflow.classList.add("top-full");
         overflow.innerHTML = "";
-        overflow.classList.remove("active");
       };
       overflow.appendChild(button);
 
@@ -117,4 +122,21 @@ function createDataWithOverflow(
 
   div.appendChild(p);
   allTextAyahsContainer.appendChild(div);
+}
+
+// =============================================================================
+// animation functions
+function animation() {
+  const animationContainer = document.createElement("div");
+  animationContainer.classList =
+    "loading-animation h-full flex items-center justify-center";
+  const h2 = document.createElement("h2");
+  h2.className = "flex items-center justify-center headerScreen:text-2xl";
+  h2.appendChild(document.createTextNode("جاري التحميل"));
+  const span = document.createElement("span");
+  span.className =
+    "block circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast";
+  h2.appendChild(span);
+  animationContainer.appendChild(h2);
+  return animationContainer;
 }

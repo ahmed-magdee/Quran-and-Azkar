@@ -74,18 +74,22 @@
         <div
           class="loading-animation h-[calc(100vh-(80px+66px))] flex items-center justify-center"
         >
-          <h1 class="flex items-center justify-center headerScreen:text-2xl">
+          <h2 class="flex items-center justify-center headerScreen:text-2xl">
             جاري التحميل
             <div
               class="circle mr-3 w-11 h-11 border-[6px] border-[#4f4b29]/30 border-t-[#4f4b29] rounded-full animate-spin-fast"
             ></div>
-          </h1>
+          </h2>
         </div>
         <ul class="main-ul flex flex-wrap items-center justify-center"></ul>
       </div>
     </section>
     <!-- End Main Section -->
-    <section class="overflow relative"></section>
+    <!-- Start Popup Div -->
+    <section
+      class="overflow transition-all duration-300 fixed top-full right-0 text-center w-full h-full bg-white/40 backdrop-blur-md pt-3 px-4 overflow-y-auto z-50"
+    ></section>
+    <!-- End Popup Div -->
     <script src="js/header.js"></script>
     <script src="js/public.js"></script>
     <script src="js/quran.js"></script>
