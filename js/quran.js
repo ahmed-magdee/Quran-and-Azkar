@@ -150,6 +150,7 @@ function createTheMainSorah(allData, sorahWhatWeWant) {
   button.innerHTML = "X";
 
   button.onclick = () => {
+    overflow.innerHTML = "";
     overflow.classList.remove("top-0");
     overflow.classList.add("top-full");
   };
