@@ -1723,6 +1723,10 @@ span.active {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.opacity-100 {
+  opacity: 1;
+}
+
 .shadow-\[0_4px_10px_0_\#4f4b29\] {
   --tw-shadow: 0 4px 10px 0 #4f4b29;
   --tw-shadow-colored: 0 4px 10px 0 var(--tw-shadow-color);

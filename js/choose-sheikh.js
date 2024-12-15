@@ -926,7 +926,10 @@ document.addEventListener("click", (e) => {
   if (!e.target.classList.contains("icon-sheikh")) {
     const sheikhList = document.querySelector(".sorahs-list-ul-small-screens");
     if (sheikhList) {
-      sheikhList.remove();
+      sheikhList.style.opacity = 0;
+      setTimeout(() => {
+        sheikhList.remove();
+      }, 300);
       document.querySelector(".icon-sheikh").classList.remove("open");
     }
   }
@@ -987,11 +990,14 @@ function createIconToDisplaySheikhListInSmallScreens(data, allDataContainer) {
   i.onclick = () => {
     if (i.classList.contains("open")) {
       i.classList.remove("open");
-      document.querySelector(".sorahs-list-ul-small-screens").remove();
+      document.querySelector(".sorahs-list-ul-small-screens").style.opacity = 0;
+      setTimeout(() => {
+        document.querySelector(".sorahs-list-ul-small-screens").remove();
+      }, 300);
     } else {
       i.classList.add("open");
       const stylesUl =
-        "sorahs-list-ul-small-screens absolute top-[32px] w-[200px] h-[calc(100%-50px)] overflow-y-auto shadow-box backdrop-blur-2xl bg-second/30 rounded-md right-[15px] transition-all duration-300 md:hidden";
+        "sorahs-list-ul-small-screens absolute top-[32px] w-[200px] h-[calc(100%-50px)] overflow-y-auto shadow-box backdrop-blur-2xl bg-second/30 rounded-md right-[15px] transition-all duration-300 md:hidden border border-second";
       const stylesLi =
         "flex items-center gap-2 p-[5px] mx-[5px] rounded-md border-b border-second cursor-default";
       const stylesImg = "w-8 h-8 rounded-full bg-second";
@@ -1019,6 +1025,10 @@ function createShiekhList(
   allDataContainer
 ) {
   const allSheikhUl = document.createElement("ul");
+  allSheikhUl.style.opacity = 0;
+  setTimeout(() => {
+    allSheikhUl.style.opacity = 1;
+  });
   allSheikhUl.className = `${stylesUl}`;
   allDataContainer.appendChild(allSheikhUl);
   data.forEach(({ name }) => {
